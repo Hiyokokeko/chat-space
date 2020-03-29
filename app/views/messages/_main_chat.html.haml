@@ -1,0 +1,36 @@
+.main-chat
+  .main-header
+    .main-header__left
+      .main-header__left__group
+        group
+      .main-header__left__member-list
+        Member：
+        .main-header__left__member-list__member
+          aaa
+    = link_to "#", class: "main-header__edit" do
+      = "Edit"
+  .main-messages
+    .message
+      .message__info
+        .message__info__name
+          aaa
+        .message__info__date
+          2020/03/28(Sat) 21:08:29
+      .message__text
+        oioio
+    .message
+      .message__info
+        .message__info__name
+          aaa
+        .message__info__date
+          2020/03/28(Sat) 21:08:29
+      .message__text
+        oioio
+  .main-form
+    .main-form__new-message
+      .main-form__new-message__input-box
+        %input{type: "text", class: "main-form__new-message__input-box__text", placeholder: "type a message"}
+        %label{class: "main-form__new-message__input-box__image"}
+          = icon('fas', 'image')
+          %input{type: "file", class:"main-form__new-message__input-box__image__file"}
+      %input{type: "submit", class: "submit-btn"}
