@@ -2,13 +2,13 @@
   .side-header
     .side-header__items
       .side-header__items__name
-        aaa
+        = current_user.name
       .side-header__items__icons
         .side-header__item__icons__new-group
           = link_to "#" do
             = icon('far', 'edit')
         .side-header__item__icons__user-edit
-          = link_to "#" do
+          = link_to edit_user_path(current_user) do
             = icon('fa', 'cog')
   .side-groups
     .group
