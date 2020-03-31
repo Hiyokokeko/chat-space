@@ -11,13 +11,10 @@
           = link_to edit_user_path(current_user) do
             = icon('fa', 'cog')
   .side-groups
-    .group
-      .group__group-name
-        techcamp
-      .group__group-messages
-        まだメッセージがありません
-    .group
-      .group__group-name
-        techcamp
-      .group__group-messages
-        まだメッセージがありません
+    - current_user.groups.each do |group|
+      .group
+        = link_to '#' do
+          .group__group-name
+            = group.name
+        .group__group-message
+          まだメッセージがありません
