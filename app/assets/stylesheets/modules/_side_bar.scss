@@ -37,16 +37,20 @@
     height: calc(100vh - 100px);
     padding: 20px 20px 0;
     .group{
-      color: #ffffff;
       font-weight: bold;
       margin-bottom: 40px;
-      &__group-name{
-        font-size: 15px;
+      color: #ffffff;
+      a{
+        text-decoration: none;
       }
-      &__group-messages{
-        font-size: 11px;
-        margin-top: 5px;
-      }
+        &__group-name{
+          color: #ffffff;
+          font-size: 15px;
+        }
+        &__group-message{
+          font-size: 11px;
+          margin-top: 5px;
+        }
     }
   }
 }
