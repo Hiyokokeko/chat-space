@@ -2,35 +2,21 @@
   .main-header
     .main-header__left
       .main-header__left__group
-        group
+        = @group.name
       .main-header__left__member-list
         Member：
-        .main-header__left__member-list__member
-          aaa
-    = link_to "#", class: "main-header__edit" do
+        - @group.users.each do |user|
+          = "#{user.name}"
+    = link_to edit_group_path(@group), class: "main-header__edit" do
       = "Edit"
   .main-messages
-    .message
-      .message__info
-        .message__info__name
-          aaa
-        .message__info__date
-          2020/03/28(Sat) 21:08:29
-      .message__text
-        oioio
-    .message
-      .message__info
-        .message__info__name
-          aaa
-        .message__info__date
-          2020/03/28(Sat) 21:08:29
-      .message__text
-        oioio
+    = render @messages
   .main-form
-    .main-form__new-message
-      .main-form__new-message__input-box
-        %input{type: "text", class: "main-form__new-message__input-box__text", placeholder: "type a message"}
-        %label{class: "main-form__new-message__input-box__image"}
-          = icon('fas', 'image')
-          %input{type: "file", class:"main-form__new-message__input-box__image__file"}
-      %input{type: "submit", class: "submit-btn"}
+    .main-form__window
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'main-form__window__text', placeholder: 'type a message'
+        .main-form__window__mask
+          = f.label :image, class: 'main-form__window__mask__image' do
+            = icon('fas', 'image', class: 'main-form__window__mask__image--icon')
+            = f.file_field :image, class: 'main-form__window__mask__image--hidden'
+        = f.submit 'Send', class: 'main-form__window__submit'
