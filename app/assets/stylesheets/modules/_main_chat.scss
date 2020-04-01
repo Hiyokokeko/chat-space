@@ -42,15 +42,15 @@
     background-color: #fafafa;
     height: calc(100vh - 100px - 90px);
     padding: 35px 40px;
-    .message{
+    overflow: scroll;
+    &__message{
       padding-bottom: 46px;
       &__info{
         display: flex;
-        font-size: 16px;
         margin-bottom: 12px;
         &__name{
           color: #333333;
-          justify-content: space-between;
+          font-size: 16px;
           font-weight: bold;
         }
         &__date{

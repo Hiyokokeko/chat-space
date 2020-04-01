@@ -10,22 +10,7 @@
     = link_to "#", class: "main-header__edit" do
       = "Edit"
   .main-messages
-    .message
-      .message__info
-        .message__info__name
-          aaa
-        .message__info__date
-          2020/03/28(Sat) 21:08:29
-      .message__text
-        oioio
-    .message
-      .message__info
-        .message__info__name
-          aaa
-        .message__info__date
-          2020/03/28(Sat) 21:08:29
-      .message__text
-        oioio
+    = render @messages
   .main-form
     .main-form__window
       = form_for [@group, @message] do |f|
