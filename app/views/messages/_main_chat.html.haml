@@ -27,10 +27,11 @@
       .message__text
         oioio
   .main-form
-    .main-form__new-message
-      .main-form__new-message__input-box
-        %input{type: "text", class: "main-form__new-message__input-box__text", placeholder: "type a message"}
-        %label{class: "main-form__new-message__input-box__image"}
-          = icon('fas', 'image')
-          %input{type: "file", class:"main-form__new-message__input-box__image__file"}
-      %input{type: "submit", class: "submit-btn"}
+    .main-form__window
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'main-form__window__text', placeholder: 'type a message'
+        .main-form__window__mask
+          = f.label :image, class: 'main-form__window__mask__image' do
+            = icon('fas', 'image', class: 'main-form__window__mask__image--icon')
+            = f.file_field :image, class: 'main-form__window__mask__image--hidden'
+        = f.submit 'Send', class: 'main-form__window__submit'

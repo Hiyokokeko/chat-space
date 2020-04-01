@@ -69,37 +69,40 @@
   .main-form{
     background-color: #d2d2d2;
     height: 90px;
+    width: 100%;
     padding: 20px 40px;
-    &__new-message{
-      display: flex;
-      &__input-box{
-        width: 100%;
-        position: relative;
-        &__text{
-          height: 50px;
-          width: 100%;
-          border-style: none;
-          padding: 0 40px 0 10px;
-        }
-        &__image{
+    &__window{
+      position: relative;
+      &__text{
+        position: absolute;
+        height: 50px;
+        width: calc(100% - 100px - 15px);
+        padding-left: 10px;
+      }
+        &__mask{
           position: absolute;
-          top: 10px;
-          right: 10px;
-          font-size: 20px;
-          cursor: pointer;
-          &__file{
-            display: none;
+          height: 50px;
+          right: calc(100px + 15px + 10px);
+          &__image{
+            display: flex;
+            &--icon{
+              line-height: 50px;
+              cursor: pointer;
+            }
+            &--hidden{
+              display: none;
+            }
           }
         }
-      }
-      .submit-btn {
+      &__submit {
         width: 100px;
         height: 50px;
         background-color: #38aef0;
         cursor: pointer;
         color: #ffffff;
-        margin-left: 15px;
+        right: 0;
         padding: 0 30px;
+        position: absolute;
       }
     }
   }
