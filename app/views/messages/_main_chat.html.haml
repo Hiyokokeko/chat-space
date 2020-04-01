@@ -2,12 +2,12 @@
   .main-header
     .main-header__left
       .main-header__left__group
-        group
+        = @group.name
       .main-header__left__member-list
         Member：
-        .main-header__left__member-list__member
-          aaa
-    = link_to "#", class: "main-header__edit" do
+        - @group.users.each do |user|
+          = "#{user.name}"
+    = link_to edit_group_path(@group), class: "main-header__edit" do
       = "Edit"
   .main-messages
     = render @messages
