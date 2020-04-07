@@ -50,6 +50,10 @@ $(function(){
       $('.main-messages').append(html);
       $('.main-messages').animate({ scrollTop: $('.main-messages')[0].scrollHeight});
       $('form')[0].reset();
+      $('.main-form__window__submit').prop('disabled', false);
     })
+    .fail(function(){
+      alert("メッセージ送信に失敗しました");
+  });
   })
 });
