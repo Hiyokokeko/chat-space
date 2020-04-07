@@ -12,7 +12,6 @@ $(function(){
                     </div>
                       <div class="main-messages__message__text">
                         ${message.content}
-                      </div>
                     </div>
                     <imag src=${message.image}>
                   </div>`
@@ -29,16 +28,15 @@ $(function(){
                     </div>
                       <div class="main-messages__message__text">
                         ${message.content}
-                      </div>
                     </div>
                   </div>`
       return html;
     };
   }
   $('#new_message').on('submit',function(e){
-    e.preventDefault()
+    e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr('action');
+    var url = $(this).attr('action')
     $.ajax({
       url: url,
       type: 'POST',
@@ -49,7 +47,8 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html);
+      $('.main-messages').append(html);
+      $('.main-messages').animate({ scrollTop: $('.main-messages')[0].scrollHeight});
       $('form')[0].reset();
     })
   })
