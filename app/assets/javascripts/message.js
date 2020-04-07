@@ -1,4 +1,40 @@
 $(function(){
+  function buildHTML(message){
+    if (message.image){
+      var html = `<div class="main-messages__message">
+                    <div class="main-messages__message__info">
+                      <div class="main-messages__message__info__name">
+                        ${message.user_name}
+                      </div>
+                      <div class="main-messages__message__info__date">
+                        ${message.created_at}
+                      </div>
+                    </div>
+                      <div class="main-messages__message__text">
+                        ${message.content}
+                      </div>
+                    </div>
+                    <imag src=${message.image}>
+                  </div>`
+      return html;
+    } else {
+      var html = `<div class="main-messages__message">
+                    <div class="main-messages__message__info">
+                      <div class="main-messages__message__info__name">
+                        ${message.user_name}
+                      </div>
+                      <div class="main-messages__message__info__date">
+                        ${message.created_at}
+                      </div>
+                    </div>
+                      <div class="main-messages__message__text">
+                        ${message.content}
+                      </div>
+                    </div>
+                  </div>`
+      return html;
+    };
+  }
   $('#new_message').on('submit',function(e){
     e.preventDefault()
     var formData = new FormData(this);
@@ -10,6 +46,9 @@ $(function(){
       dataType: 'json',
       processData: false,
       contentType: false
+    })
+    .done(function(data){
+      var html = buildHTML(data);
     })
   })
 });
