@@ -37,6 +37,7 @@ $(function(){
         }
       })
       .fail(function(){
+        alert("ユーザーの検索に失敗しました");
       });
   });
 });
