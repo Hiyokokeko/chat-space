@@ -40,4 +40,8 @@ $(function(){
         alert("ユーザーの検索に失敗しました");
       });
   });
+
+  $("#user-search-result").on('click', '.chat-group-user__btn--add', function(){
+    console.log("ok")
+  });
 });
