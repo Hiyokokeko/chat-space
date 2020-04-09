@@ -1,7 +1,7 @@
 $(function(){
   function buildHTML(message){
     if (message.image){
-      var html = `<div class="main-messages__message">
+      var html = `<div class="main-messages__message" data-message-id${message.id}>
                     <div class="main-messages__message__info">
                       <div class="main-messages__message__info__name">
                         ${message.user_name}
@@ -17,7 +17,7 @@ $(function(){
                   </div>`
       return html;
     } else {
-      var html = `<div class="main-messages__message">
+      var html = `<div class="main-messages__message" data-message-id=${message.id}>
                     <div class="main-messages__message__info">
                       <div class="main-messages__message__info__name">
                         ${message.user_name}
@@ -33,6 +33,7 @@ $(function(){
       return html;
     };
   }
+
   $('#new_message').on('submit',function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -54,6 +55,28 @@ $(function(){
     })
     .fail(function(){
       alert("メッセージ送信に失敗しました");
-  });
+    });
   })
+  $(function(){
+    var reloadMessages = function(){
+      var last_message_id = $('.main-messages__message:last').data("message-id");
+      $.ajax({
+        url: "api/messages",
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+      .done(function(messages){
+        var insertHTML = '';
+        $.each(messages, function(i,message){
+          insertHTML += buildHTML(message)
+        });
+        $('.main-messages').append(insertHTML);
+      })
+      .fail(function(){
+        alert('error');
+      });
+    };
+    setInterval(reloadMessages, 7000);
+  });
 });
