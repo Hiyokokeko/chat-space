@@ -68,7 +68,7 @@ $(function(){
       })
       .done(function(messages){
         var insertHTML = '';
-        $.each(messages, function(i,message){
+        $.each(messages, function(index,message){
           insertHTML += buildHTML(message)
         });
         $('.main-messages').append(insertHTML);
