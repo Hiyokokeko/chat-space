@@ -1,7 +1,7 @@
 $(function(){
   function buildHTML(message){
     if (message.image){
-      var html = `<div class="main-messages__message" data-message-id${message.id}>
+      var html = `<div class="main-messages__message" data-message-id=${message.id}>
                     <div class="main-messages__message__info">
                       <div class="main-messages__message__info__name">
                         ${message.user_name}
@@ -13,7 +13,7 @@ $(function(){
                       <div class="main-messages__message__text">
                         ${message.content}
                     </div>
-                    <imag src=${message.image}>
+                    <img src=${message.image}>
                   </div>`
       return html;
     } else {
@@ -68,12 +68,12 @@ $(function(){
       })
       .done(function(messages){
         if (messages.length !== 0){
-        var insertHTML = '';
-        $.each(messages, function(index,message){
-          insertHTML += buildHTML(message)
-        });
-        $('.main-messages').append(insertHTML);
-        $('.main-messages').animate({ scrollTop: $('.main-messages')[0].scrollHeight});
+          var insertHTML = '';
+          $.each(messages, function(index,message){
+            insertHTML += buildHTML(message)
+          });
+          $('.main-messages').append(insertHTML);
+          $('.main-messages').animate({ scrollTop: $('.main-messages')[0].scrollHeight});
         }
       })
       .fail(function(){
